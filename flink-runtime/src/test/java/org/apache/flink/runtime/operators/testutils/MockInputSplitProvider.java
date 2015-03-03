@@ -23,6 +23,7 @@ import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.core.fs.FileInputSplit;
 import org.apache.flink.core.fs.Path;
 import org.apache.flink.core.io.InputSplit;
@@ -58,7 +59,7 @@ public class MockInputSplitProvider implements InputSplitProvider {
 	public void addInputSplits(final String path, final int noSplits) {
 
 		final InputSplit[] tmp = new InputSplit[noSplits];
-		final String[] hosts = { "localhost" };
+		final String[] hosts = { ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE };
 
 		final String localPath;
 		try {

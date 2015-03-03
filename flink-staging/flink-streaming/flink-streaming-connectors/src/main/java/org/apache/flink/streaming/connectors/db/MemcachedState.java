@@ -20,6 +20,8 @@ package org.apache.flink.streaming.connectors.db;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
+import org.apache.flink.configuration.ConfigConstants;
+
 import net.spy.memcached.MemcachedClient;
 
 /**
@@ -36,7 +38,7 @@ public class MemcachedState<V> implements DBState<String, V> {
 
 	public MemcachedState() {
 		try {
-			memcached = new MemcachedClient(new InetSocketAddress("localhost", 11211));
+			memcached = new MemcachedClient(new InetSocketAddress(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 11211));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

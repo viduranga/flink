@@ -50,6 +50,11 @@ public final class ConfigConstants {
 	public static final String JOB_MANAGER_IPC_ADDRESS_KEY = "jobmanager.rpc.address";
 
 	/**
+	 * The config parameter defining the value of the JOB_MANAGER_IPC_ADDRESS
+	 */
+	public static final String JOB_MANAGER_IPC_ADDRESS_VALUE = GlobalConfiguration.getString(JOB_MANAGER_IPC_ADDRESS_KEY, "localhost");
+	
+	/**
 	 * The config parameter defining the network port to connect to
 	 * for communication with the job manager.
 	 */

@@ -84,7 +84,7 @@ public class ClientTest {
 
 		final int freePort = NetUtils.getAvailablePort();
 		config = new Configuration();
-		config.setString(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_KEY, "localhost");
+		config.setString(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_KEY, ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE);
 		config.setInteger(ConfigConstants.JOB_MANAGER_IPC_PORT_KEY, freePort);
 		config.setString(ConfigConstants.AKKA_ASK_TIMEOUT, ConfigConstants.DEFAULT_AKKA_ASK_TIMEOUT);
 
@@ -108,7 +108,7 @@ public class ClientTest {
 		when(generatorMock.compileJobGraph(optimizedPlanMock)).thenReturn(jobGraph);
 
 		try {
-			Tuple2<String, Object> address = new Tuple2<String, Object>("localhost", freePort);
+			Tuple2<String, Object> address = new Tuple2<String, Object>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, freePort);
 			jobManagerSystem = AkkaUtils.createActorSystem(config, new Some<Tuple2<String, Object>>(address));
 		}
 		catch (Exception e) {

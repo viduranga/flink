@@ -93,7 +93,7 @@ object TestingUtils {
     val config = new Configuration()
 
     val (tmConfig, netConfig, connectionInfo, _) =
-      TaskManager.parseTaskManagerConfiguration(config,  "localhost", true, true)
+      TaskManager.parseTaskManagerConfiguration(config,  ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, true, true)
 
     val tmProps = Props(classOf[TestingTaskManager], connectionInfo, jmURL, tmConfig, netConfig)
     system.actorOf(tmProps)

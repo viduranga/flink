@@ -38,7 +38,7 @@ class TestingCluster(userConfiguration: Configuration, singleActorSystem: Boolea
 
   override def generateConfiguration(userConfig: Configuration): Configuration = {
     val cfg = new Configuration()
-    cfg.setString(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_KEY, "localhost")
+    cfg.setString(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_KEY, ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE)
     cfg.setInteger(ConfigConstants.JOB_MANAGER_IPC_PORT_KEY, NetUtils.getAvailablePort())
     cfg.setInteger(ConfigConstants.TASK_MANAGER_MEMORY_SIZE_KEY, 10)
 

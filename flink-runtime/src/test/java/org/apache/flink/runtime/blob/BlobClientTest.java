@@ -30,6 +30,7 @@ import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.security.MessageDigest;
 
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.runtime.jobgraph.JobID;
 import org.junit.AfterClass;

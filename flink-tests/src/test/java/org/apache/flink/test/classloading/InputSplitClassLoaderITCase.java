@@ -44,7 +44,7 @@ public class InputSplitClassLoaderITCase {
 				int port = testCluster.getJobManagerRPCPort();
 
 				PackagedProgram prog = new PackagedProgram(new File(JAR_FILE),
-						new String[] { JAR_FILE, "localhost", String.valueOf(port) } );
+						new String[] { JAR_FILE, ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, String.valueOf(port) } );
 				prog.invokeInteractiveModeForExecution();
 			}
 			finally {

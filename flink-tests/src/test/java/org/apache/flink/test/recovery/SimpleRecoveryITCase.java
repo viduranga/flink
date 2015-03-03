@@ -73,7 +73,7 @@ public class SimpleRecoveryITCase {
 			// attempt 1
 			{
 				ExecutionEnvironment env = ExecutionEnvironment.createRemoteEnvironment(
-						"localhost", cluster.getJobManagerRPCPort());
+						ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, cluster.getJobManagerRPCPort());
 
 				env.setDegreeOfParallelism(4);
 				env.setNumberOfExecutionRetries(0);
@@ -102,7 +102,7 @@ public class SimpleRecoveryITCase {
 			// attempt 2
 			{
 				ExecutionEnvironment env = ExecutionEnvironment.createRemoteEnvironment(
-						"localhost", cluster.getJobManagerRPCPort());
+						ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, cluster.getJobManagerRPCPort());
 
 				env.setDegreeOfParallelism(4);
 				env.setNumberOfExecutionRetries(0);
@@ -148,7 +148,7 @@ public class SimpleRecoveryITCase {
 			List<Long> resultCollection = new ArrayList<Long>();
 
 			ExecutionEnvironment env = ExecutionEnvironment.createRemoteEnvironment(
-					"localhost", cluster.getJobManagerRPCPort());
+					ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, cluster.getJobManagerRPCPort());
 
 			env.setDegreeOfParallelism(4);
 			env.setNumberOfExecutionRetries(1);
@@ -192,7 +192,7 @@ public class SimpleRecoveryITCase {
 			List<Long> resultCollection = new ArrayList<Long>();
 
 			ExecutionEnvironment env = ExecutionEnvironment.createRemoteEnvironment(
-					"localhost", cluster.getJobManagerRPCPort());
+					ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, cluster.getJobManagerRPCPort());
 
 			env.setDegreeOfParallelism(4);
 			env.setNumberOfExecutionRetries(3);

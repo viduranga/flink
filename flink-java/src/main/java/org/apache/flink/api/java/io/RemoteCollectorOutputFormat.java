@@ -26,6 +26,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import org.apache.flink.api.common.io.OutputFormat;
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
 
 /**
@@ -75,7 +76,7 @@ public class RemoteCollectorOutputFormat<T> implements OutputFormat<T> {
 	 * @see RemoteCollectorOutputFormat#PORT
 	 */
 	public RemoteCollectorOutputFormat() {
-		this("localhost", 8888, null);
+		this(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 8888, null);
 	}
 
 	/**

@@ -17,6 +17,7 @@
 
 package org.apache.flink.streaming.connectors.flume;
 
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.util.SerializationSchema;
@@ -30,8 +31,8 @@ public class FlumeTopology {
 
 		@SuppressWarnings("unused")
 		DataStream<String> dataStream1 = env.addSource(
-				new FlumeSource<String>("localhost", 41414, new SimpleStringSchema())).addSink(
-				new FlumeSink<String>("localhost", 42424, new StringToByteSerializer()));
+				new FlumeSource<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 41414, new SimpleStringSchema())).addSink(
+				new FlumeSink<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 42424, new StringToByteSerializer()));
 
 		env.execute();
 	}

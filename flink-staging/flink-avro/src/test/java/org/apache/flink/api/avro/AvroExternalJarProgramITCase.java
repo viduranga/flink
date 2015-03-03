@@ -50,8 +50,7 @@ public class AvroExternalJarProgramITCase {
 			String testData = getClass().getResource(TEST_DATA_FILE).toString();
 			
 			PackagedProgram program = new PackagedProgram(new File(jarFile), new String[] { testData });
-						
-			Client c = new Client(new InetSocketAddress("localhost", testMiniCluster.getJobManagerRPCPort()),
+			Client c = new Client(new InetSocketAddress(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, testMiniCluster.getJobManagerRPCPort()),
 					new Configuration(), program.getUserCodeClassLoader());
 			c.run(program, 4, true);
 		}

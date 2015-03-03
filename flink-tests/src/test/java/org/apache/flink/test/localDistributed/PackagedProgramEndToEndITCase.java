@@ -66,7 +66,7 @@ public class PackagedProgramEndToEndITCase {
 			config.setInteger(ConfigConstants.TASK_MANAGER_NUM_TASK_SLOTS, 2);
 			cluster = new ForkableFlinkMiniCluster(config, false);
 
-			RemoteExecutor ex = new RemoteExecutor("localhost", cluster.getJobManagerRPCPort());
+			RemoteExecutor ex = new RemoteExecutor(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, cluster.getJobManagerRPCPort());
 
 			ex.executeJar(JAR_PATH,
 					"org.apache.flink.test.util.testjar.KMeansForTest",

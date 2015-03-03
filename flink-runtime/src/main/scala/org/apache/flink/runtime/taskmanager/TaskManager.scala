@@ -638,7 +638,7 @@ class TaskManager(val connectionInfo: InstanceConnectionInfo,
     if (blobPort > 0) {
 
       val address = new InetSocketAddress(
-        currentJobManager.flatMap(_.path.address.host).getOrElse("localhost"),
+        currentJobManager.flatMap(_.path.address.host).getOrElse(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE),
         blobPort)
 
       log.info("Determined BLOB server address to be {}.", address)

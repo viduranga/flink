@@ -112,7 +112,7 @@ ImplicitSender with WordSpecLike with Matchers with BeforeAndAfterAll {
       val config = new Configuration()
       config.setString(ConfigConstants.TASK_MANAGER_MAX_REGISTRATION_DURATION, "1 second")
 
-      val tm = TestingUtils.startTestingTaskManagerWithConfiguration("localhost",
+      val tm = TestingUtils.startTestingTaskManagerWithConfiguration(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE,
         self.path.toString, config, _system)
 
       watch(tm)

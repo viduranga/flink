@@ -17,6 +17,7 @@
 
 package org.apache.flink.streaming.connectors.rabbitmq;
 
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.util.SerializationSchema;
@@ -30,12 +31,12 @@ public class RMQTopology {
 
 		@SuppressWarnings("unused")
 		DataStream<String> dataStream1 = env.addSource(
-				new RMQSource<String>("localhost", "hello", new SimpleStringSchema())).print();
+				new RMQSource<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, "hello", new SimpleStringSchema())).print();
 
 		@SuppressWarnings("unused")
 		DataStream<String> dataStream2 = env.fromElements("one", "two", "three", "four", "five",
 				"q").addSink(
-				new RMQSink<String>("localhost", "hello", new StringToByteSerializer()));
+				new RMQSink<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, "hello", new StringToByteSerializer()));
 
 		env.execute();
 	}
