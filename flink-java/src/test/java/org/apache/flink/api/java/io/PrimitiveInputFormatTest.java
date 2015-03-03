@@ -28,7 +28,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.junit.Test;
-
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.core.fs.FileInputSplit;
 import org.apache.flink.core.fs.Path;
@@ -183,7 +183,7 @@ public class PrimitiveInputFormatTest {
 		wrt.write(content);
 		wrt.close();
 
-		return new FileInputSplit(0, new Path(tempFile.toURI().toString()), 0, tempFile.length(), new String[] {"localhost"});
+		return new FileInputSplit(0, new Path(tempFile.toURI().toString()), 0, tempFile.length(), new String[] {ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE});
 	}
 
 }

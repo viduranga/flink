@@ -50,9 +50,9 @@ abstract class FlinkMiniCluster(val userConfiguration: Configuration,
   //                           Construction
   // --------------------------------------------------------------------------
 
-  // NOTE: THIS MUST BE getByName("localhost"), which is 127.0.0.1 and
+  // NOTE: THIS MUST BE getByName(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE), which is 127.0.0.1 and
   // not getLocalHost(), which may be 127.0.1.1
-  val HOSTNAME = InetAddress.getByName("localhost").getHostAddress()
+  val HOSTNAME = InetAddress.getByName(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE).getHostAddress()
 
   val timeout = AkkaUtils.getTimeout(userConfiguration)
 

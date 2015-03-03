@@ -21,6 +21,8 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.flink.configuration.ConfigConstants;
+
 import redis.clients.jedis.Jedis;
 
 /**
@@ -40,7 +42,7 @@ public class RedisState<K extends Serializable, V extends Serializable> extends
 
 	public RedisState(DBSerializer<K> keySerializer, DBSerializer<V> valueSerializer) {
 		super(keySerializer, valueSerializer);
-		jedis = new Jedis("localhost");
+		jedis = new Jedis(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE);
 	}
 
 	public RedisState() {

@@ -28,9 +28,9 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.flink.api.common.io.LocatableInputSplitAssigner;
+import org.apache.flink.configuration.ConfigConstants;
 import org.apache.flink.core.io.InputSplit;
 import org.apache.flink.core.io.LocatableInputSplit;
-
 import org.junit.Test;
 
 
@@ -41,7 +41,7 @@ public class LocatableSplitAssignerTest {
 		try {
 			final int NUM_SPLITS = 50;
 			final String[][] hosts = new String[][] {
-					new String[] { "localhost" },
+					new String[] { ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE },
 					new String[0],
 					null
 			};
@@ -298,7 +298,7 @@ public class LocatableSplitAssignerTest {
 			final int SUM_OF_IDS = (NUM_SPLITS-1) * (NUM_SPLITS) / 2;
 			
 			final String[][] hosts = new String[][] {
-					new String[] { "localhost" },
+					new String[] { ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE },
 					new String[0],
 					null
 			};
@@ -518,11 +518,11 @@ public class LocatableSplitAssignerTest {
 		final Random rand = new Random(seed);
 
 		for (int i = 0; i < splitHosts.length; i++) {
-			splitHosts[i] = "localHost" + i;
+			splitHosts[i] = ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE + i;
 		}
 		for (int i = 0; i < requestingHosts.length; i++) {
 			if (i % 2 == 0) {
-				requestingHosts[i] = "localHost" + i;
+				requestingHosts[i] = ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE + i;
 			} else {
 				requestingHosts[i] = "remoteHost" + i;
 			}

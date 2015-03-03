@@ -62,7 +62,7 @@ public class StreamingWordCount {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironment();
         
         DataStream<Tuple2<String, Integer>> dataStream = env
-                .socketTextStream("localhost", 9999)
+                .socketTextStream(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 9999)
                 .flatMap(new Splitter())
                 .groupBy(0)
                 .sum(1);
@@ -718,7 +718,7 @@ Example:
 
 ~~~java
 DataStream<String> stream = env
-	.addSource(new FlumeSource<String>("localhost", 41414, new SimpleStringSchema()))
+	.addSource(new FlumeSource<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 41414, new SimpleStringSchema()))
 	.print();
 ~~~
 
@@ -734,7 +734,7 @@ The followings have to be provided for the `FlumeSink(…)` constructor in order
 Example: 
 
 ~~~java
-stream.addSink(new FlumeSink<String>("localhost", 42424, new StringToByteSerializer()));
+stream.addSink(new FlumeSink<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, 42424, new StringToByteSerializer()));
 ~~~
 
 ##### Configuration file<a name="config_file"></a>
@@ -791,7 +791,7 @@ Example:
 
 ~~~java
 DataStream<String> stream = env
-	.addSource(new RMQSource<String>("localhost", "hello", new SimpleStringSchema()))
+	.addSource(new RMQSource<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, "hello", new SimpleStringSchema()))
 	.print();
 ~~~
 
@@ -807,7 +807,7 @@ The followings have to be provided for the `RMQSink(…)` constructor in order:
 Example: 
 
 ~~~java
-stream.addSink(new RMQSink<String>("localhost", "hello", new StringToByteSerializer()));
+stream.addSink(new RMQSink<String>(ConfigConstants.JOB_MANAGER_IPC_ADDRESS_VALUE, "hello", new StringToByteSerializer()));
 ~~~
 
 
